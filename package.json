@@ -1,0 +1,33 @@
+{
+  "name": "tcc_g6",
+  "version": "1.0.0",
+  "description": "gerenciamento de estoque",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuiisLiins/tcc_g6.git"
+  },
+  "keywords": [
+    "mercado",
+    "controle de estoque"
+  ],
+  "author": "Luis - Davi - Daniele - Danielly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuiisLiins/tcc_g6/issues"
+  },
+  "homepage": "https://github.com/LuiisLiins/tcc_g6#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
