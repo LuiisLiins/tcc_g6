@@ -47,4 +47,4 @@ router.post('/usuarios', UsuariosController.cadastrarUsuarios)
 router.patch('/usuarios', UsuariosController.editarUsuarios)
 router.delete('/usuarios', UsuariosController.apagarUsuarios)
 
-module.exports = router;
+module.export = router;
