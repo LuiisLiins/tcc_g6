@@ -4,12 +4,14 @@ const db = require('../database/connection');
 module.exports = {
     async listarAtividades(request, response) {
         try {
-            return response.status(200).json({confirma: 'listar atividades'});
+            const sql = 'SELECT atv_id, atv_dthr, atv_status, prod_id, usu_id, set_id FROM ATIVIDADES;';
+            const atividades = await db.query(sql);
+            return response.status(200).json({confirma: atividades[0]});
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     }, 
-
+                  
     async cadastrarAtividades(request, response) {
         try {
             return response.status(200).json({confirma: 'cadastrar atividades'});

@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise');
 const bd_usuario = 'us_etim_121_g6'; // usuário
 const bd_senha = 'ah7372'; // senha
 const bd_servidor = '10.67.22.216'; // servidor
-const bd_porta = '3333'; // porta
+const bd_porta = '3306'; // porta
 const bd_banco = 'bd_tcc_etim_121_g6'; // nome do banco
 let connection;
     
