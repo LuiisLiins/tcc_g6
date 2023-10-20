@@ -6,8 +6,16 @@ module.exports = {
         try {
             const sql = 'SELECT ret_id, ret_qtd, prod_id, atv_id FROM RETIRADAS_ESTOQUE;';
             const retiradaEstoque = await db.query(sql);
-            return response.status(200).json({confirma:  retiradaEstoque[0]});
-        } catch (error) {
+            const nReg = retiradaEstoque[0].lenght;
+            return response.status(200).json(
+                {
+                confirma:  'Sucesso',
+                message: 'Retirada de Estoque casdastradas',
+                nItens: nReg, 
+                itens: retiradaEstoque[0]
+            }
+        );
+    } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     },
