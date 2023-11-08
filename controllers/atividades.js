@@ -39,7 +39,19 @@ module.exports = {
 
     async editarAtividades(request, response) {
         try {
-            return response.status(200).json({confirma: 'editar atividades'});
+            const {atv_dthr, atv_status, prod_id, usu_id, set_id} = request.body;
+            const{atv_id} = request.params;
+            const sql = 'UPDATE atividades SET atv_dthr = ?, atv_status = ?, prod_id = ?, usu_id + ?, set_id = ? WHERE atv_id =?;';
+            const values = [atv_id, atv_dthr, atv_status, prod_id, usu_id, set_id];
+            const atualizacao = await db.query(sql, values);
+
+            return response.status(200).json(
+                {
+                    confirma: 'Sucesso',
+                    message: 'Atividades' + atv_id + "atualizado com sucesso!",
+                    registrosAtualizados: atualizacao[0].affectedRows
+                }
+            );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }

@@ -14,7 +14,7 @@ const UsuariosController = require('../controllers/usuarios');
 
 router.get('/atividades', AtividadesController.listarAtividades)
 router.post('/atividades', AtividadesController.cadastrarAtividades)
-router.patch('/atividades', AtividadesController.editarAtividades)
+router.patch('/atividades/:atv_id', AtividadesController.editarAtividades)
 router.delete('/atividades', AtividadesController.apagarAtividades)
 
 router.get('/fornecedores', FornecedoresController.listarFornecedores)
