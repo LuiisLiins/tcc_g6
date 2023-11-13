@@ -6,7 +6,7 @@ module.exports = {
         try {
             const sql = 'SELECT ret_id, ret_qtd, prod_id, atv_id FROM RETIRADAS_ESTOQUE;';
             const retiradaEstoque = await db.query(sql);
-            const nReg = retiradaEstoque[0].lenght;
+            const nReg = retiradaEstoque[0].length;
             return response.status(200).json(
                 {
                 confirma:  'Sucesso',
@@ -23,8 +23,8 @@ module.exports = {
     async cadastrarRetiradaEstoque(request, response) {
         try {
             const {ret_qtd, prod_id, atv_id} = request.body;
-            const sql = 'INSERT INTO RETIRADAS_ESTOQUE (ret_id, ret_qtd, prod_id, atv_id) VALUES (?, ?, ?, ?) ;';
-            const values = [ret_id, ret_qtd, prod_id, atv_id];
+            const sql = 'INSERT INTO RETIRADAS_ESTOQUE (ret_qtd, prod_id, atv_id) VALUES (?, ?, ?) ;';
+            const values = [ret_qtd, prod_id, atv_id];
             const confirmacao = await db.query(sql,values);
             const ret_id = confirmacao[0].insertId;
 

@@ -2,16 +2,16 @@ const { json } = require('express');
 const db = require('../database/connection'); 
 
 module.exports = {
-    async listarAtividades(request, response) {
+    async listarAtividadeTipos(request, response) {
         try {
-            const sql = 'SELECT atv_id, atv_dthr, atv_status, prod_id, usu_id, set_id FROM ATIVIDADES;';
-            const atividades = await db.query(sql);
-            const nReg = atividades[0].length;
+            const sql = 'SELECT atv_tp_id, atv_tp_tipo FROM ATIVIDADE_TIPOS;';
+            const atividades_Tipos = await db.query(sql);
+            const nReg = atividades_Tipos[0].length;
             return response.status(200).json(
                 {confirma: 'Sucesso',
-                message: 'Atividades cadastradas',
+                message: 'Tipos de Atividade cadastradas',
                 nItens: nReg, 
-                itens: atividades[0]
+                itens: atividades_Tipos[0]
             }
         );
    } catch (error) {
@@ -19,36 +19,36 @@ module.exports = {
         }
     }, 
                   
-    async cadastrarAtividades(request, response) {
+    async cadastrarAtividadeTipos(request, response) {
         try {
-            const {atv_dthr, atv_status, prod_id, usu_id, set_id} = request.body;
-            const sql = 'INSERT INTO atividades (atv_dthr, atv_status, prod_id, usu_id, set_id, atv_tp_id) VALUES (?, ?, ?, ?, ?, ?) ;';
-            const values = [atv_dthr, atv_status, prod_id, usu_id, set_id];
+            const {atv_tp_tipo} = request.body;
+            const sql = 'INSERT INTO atividades_tipos (atv_tp_tipo) VALUES (?) ;';
+            const values = [atv_tp_tipo];
             const confirmacao = await db.query(sql,values);
-            const atv_id = confirmacao[0].insertId;
+            const atv_tp_id = confirmacao[0].insertId;
 
             return response.status(200).json(
                 {confirma: 'Sucesso',
-                 message:  'cadastro de atividades concluido',
-                 atv_id
+                 message:  'cadastro de tipos de atividade concluido',
+                 atv_tp_id
                 });
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     }, 
 
-    async editarAtividades(request, response) {
+    async editarAtividadeTipos(request, response) {
         try {
-            const {atv_dthr, atv_status, prod_id, usu_id, set_id} = request.body;
+            const {atv_tp_id, atv_tp_tipo} = request.body;
             const{atv_id} = request.params;
-            const sql = 'UPDATE Atividades SET atv_dthr = ?, atv_status = ?, prod_id = ?, usu_id = ?, set_id = ? WHERE atv_id = ?;';
-            const values = [atv_id, atv_dthr, atv_status, prod_id, usu_id, set_id];
+            const sql = 'UPDATE Atividades_tipos SET atv_tp_tipo = ? WHERE atv_tp_id, = ?;';
+            const values = [atv_tp_tipo];
             const atualizacao = await db.query(sql, values);
 
             return response.status(200).json(
                 {
                     confirma: 'Sucesso',
-                    message: 'Atividades ' + atv_id + " atualizado com sucesso!",
+                    message: 'Atividades ' + atv_tp_id + " atualizado com sucesso!",
                     registrosAtualizados: atualizacao[0].affectedRows
                 }
             );
@@ -57,7 +57,7 @@ module.exports = {
         }
     }, 
 
-    async apagarAtividades(request, response) {
+    async apagarAtividadeTipos(request, response) {
         try {
             return response.status(200).json({confirma: 'apagar atividades'});
         } catch (error) {
