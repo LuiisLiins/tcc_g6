@@ -23,7 +23,7 @@ module.exports = {
     async cadastrarFornecedoresProduto(request, response) {
         try {
             const { prod_id} = request.body;
-            const sql = 'INSERT INTO Fornecedores_produto ( prod_id) VALUES (?) ;';
+            const sql = 'INSERT INTO Fornecedores_produto (prod_id) VALUES (?) ;';
             const values = [prod_id];
             const confirmacao = await db.query(sql,values);
             const forn_id = confirmacao[0].insertId;
@@ -42,7 +42,7 @@ module.exports = {
         try {
             const { prod_id} = request.body;
             const{forn_id} = request.params;
-            const sql = 'UPDATE Fornecedores_produto SET prod_id = ? WHERE forn_id =?;';
+            const sql = 'UPDATE Fornecedores_produto SET prod_id = ? WHERE forn_id = ?;';
             const values = [forn_id, prod_id];
             const atualizacao = await db.query(sql, values);
 

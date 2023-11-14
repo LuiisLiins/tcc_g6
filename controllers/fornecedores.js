@@ -22,8 +22,8 @@ module.exports = {
     async cadastrarFornecedores(request, response) {
         try {
             const {forn_cnpj, forn_razao_social, forn_nome, forn_celular, forn_fixo, forn_email, forn_cidade} = request.body;
-            const sql = 'INSERT INTO Fornecedores (forn_id, forn_cnpj, forn_razao_social, forn_nome, forn_celular, forn_fixo, forn_email, forn_cidade) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ;';
-            const values = [forn_id, forn_cnpj, forn_razao_social, forn_nome, forn_celular, forn_fixo, forn_email, forn_cidade];
+            const sql = 'INSERT INTO Fornecedores (forn_cnpj, forn_razao_social, forn_nome, forn_celular, forn_fixo, forn_email, forn_cidade) VALUES (?, ?, ?, ?, ?, ?, ?) ;';
+            const values = [forn_cnpj, forn_razao_social, forn_nome, forn_celular, forn_fixo, forn_email, forn_cidade];
             const confirmacao = await db.query(sql,values);
             const forn_id = confirmacao[0].insertId;
 
