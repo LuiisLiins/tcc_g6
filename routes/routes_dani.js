@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const AtividadesController = require('../controllers/atividades');
+const AtividadeTiposController = require('../controllers/atividadeTipos');
 const FornecedoresController = require('../controllers/fornecedores');
 const FornecedoresProdutosController = require('../controllers/fornecedoresProduto');
 const ProdutosController = require('../controllers/produtos');

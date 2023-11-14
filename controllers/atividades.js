@@ -59,9 +59,19 @@ module.exports = {
 
     async apagarAtividades(request, response) {
         try {
-            return response.status(200).json({confirma: 'apagar atividades'});
+            const{atv_id} = request.params;
+            const sql = 'DELETE FROM Atividades WHERE atv_id = ?;';
+            const values = [atv_id];
+            await db.query(sql, values);
+
+            return response.status(200).json(
+                {
+                    confirma: 'Sucesso',
+                    message:'Atividade com ID ' + atv_id + ' excluído com sucesso'
+                }
+            );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
-    }, 
+    },
 };  

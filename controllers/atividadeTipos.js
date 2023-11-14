@@ -22,7 +22,7 @@ module.exports = {
     async cadastrarAtividadeTipos(request, response) {
         try {
             const {atv_tp_tipo} = request.body;
-            const sql = 'INSERT INTO atividades_tipos (atv_tp_tipo) VALUES (?) ;';
+            const sql = 'INSERT INTO atividade_tipos (atv_tp_tipo) VALUES (?) ;';
             const values = [atv_tp_tipo];
             const confirmacao = await db.query(sql,values);
             const atv_tp_id = confirmacao[0].insertId;
@@ -39,9 +39,9 @@ module.exports = {
 
     async editarAtividadeTipos(request, response) {
         try {
-            const {atv_tp_id, atv_tp_tipo} = request.body;
-            const{atv_id} = request.params;
-            const sql = 'UPDATE Atividades_tipos SET atv_tp_tipo = ? WHERE atv_tp_id, = ?;';
+            const {atv_tp_tipo} = request.body;
+            const{atv_tp_id} = request.params;
+            const sql = 'UPDATE Atividade_tipos SET atv_tp_tipo = ? WHERE atv_tp_id = NULL;';
             const values = [atv_tp_tipo];
             const atualizacao = await db.query(sql, values);
 
@@ -59,9 +59,19 @@ module.exports = {
 
     async apagarAtividadeTipos(request, response) {
         try {
-            return response.status(200).json({confirma: 'apagar atividades'});
+            const{ atv_tp_id} = request.params;
+            const sql = 'DELETE FROM Atividade_tipos WHERE atv_tp_id = ?;';
+            const values = [ atv_tp_id];
+            await db.query(sql, values);
+
+            return response.status(200).json(
+                {
+                    confirma: 'Sucesso',
+                    message:'Tipo de tividade com ID ' + atv_tp_id + ' excluído com sucesso'
+                }
+            );
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
-    }, 
+    },
 };  
