@@ -41,7 +41,7 @@ module.exports = {
         try {
             const {atv_tp_tipo} = request.body;
             const{atv_tp_id} = request.params;
-            const sql = 'UPDATE Atividade_tipos SET atv_tp_tipo = ? WHERE atv_tp_id = NULL;';
+            const sql = 'UPDATE Atividade_tipos SET atv_tp_tipo = ? WHERE atv_tp_id = ?;';
             const values = [atv_tp_tipo];
             const atualizacao = await db.query(sql, values);
 
@@ -59,9 +59,9 @@ module.exports = {
 
     async apagarAtividadeTipos(request, response) {
         try {
-            const{ atv_tp_id} = request.params;
+            const{atv_tp_id} = request.params;
             const sql = 'DELETE FROM Atividade_tipos WHERE atv_tp_id = ?;';
-            const values = [ atv_tp_id];
+            const values = [atv_tp_id];
             await db.query(sql, values);
 
             return response.status(200).json(

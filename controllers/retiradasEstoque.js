@@ -1,19 +1,18 @@
 const { json } = require('express'); 
 const db = require('../database/connection'); 
-const atividades = require('./atividades');
 
 module.exports = {
-    async listarRetiradaEstoque(request, response) {
+    async listarRetiradasEstoque(request, response) {
         try {
             const sql = 'SELECT ret_id, ret_qtd, prod_id, atv_id FROM RETIRADAS_ESTOQUE;';
-            const retiradaEstoque = await db.query(sql);
-            const nReg = retiradaEstoque[0].length;
+            const retiradasEstoque = await db.query(sql);
+            const nReg = retiradasEstoque[0].length;
             return response.status(200).json(
                 {
                 confirma:  'Sucesso',
                 message: 'Retirada de Estoque casdastradas',
                 nItens: nReg, 
-                itens: retiradaEstoque[0]
+                itens: retiradasEstoque[0]
             }
         );
     } catch (error) {
@@ -21,7 +20,7 @@ module.exports = {
         }
     },
     
-    async cadastrarRetiradaEstoque(request, response) {
+    async cadastrarRetiradasEstoque(request, response) {
         try {
             const {ret_qtd, prod_id, atv_id} = request.body;
             const sql = 'INSERT INTO RETIRADAS_ESTOQUE (ret_qtd, prod_id, atv_id) VALUES (?, ?, ?) ;';
@@ -41,12 +40,12 @@ module.exports = {
         }
     }, 
 
-    async editarRetiradaEstoque(request, response) {
+    async editarRetiradasEstoque(request, response) {
         try {
             const {ret_qtd, prod_id, atv_id} = request.body;
             const{ret_id} = request.params;
-            const sql = 'UPDATE RETIRADAS_ESTOQUE SET ret_qtd = ?, prod_id = ?, atv_id = ? WHERE ret_id =?;';
-            const values = [ret_id, ret_qtd, prod_id, atv_id];
+            const sql = 'UPDATE RETIRADAS_ESTOQUE SET ret_qtd = ?, prod_id = ?, atv_id = ? WHERE ret_id = ?;';
+            const values = [ret_qtd, prod_id, atv_id];
             const atualizacao = await db.query(sql, values);
 
             return response.status(200).json(
@@ -61,7 +60,7 @@ module.exports = {
         }
     },
 
-    async apagarRetiradaEstoque(request, response) {
+    async apagarRetiradasEstoque(request, response) {
         try {
             const{ret_id} = request.params;
             const sql = 'DELETE FROM RETIRADAS_ESTOQUE WHERE ret_id = ?;';

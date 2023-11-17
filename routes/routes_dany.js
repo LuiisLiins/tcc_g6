@@ -7,7 +7,7 @@ const AtividadeTiposController = require('../controllers/atividadeTipos');
 const FornecedoresController = require('../controllers/fornecedores');
 const FornecedoresProdutosController = require('../controllers/fornecedoresProduto');
 const ProdutosController = require('../controllers/produtos');
-const RetiradaEstoqueController = require('../controllers/retiradaEstoque');
+const RetiradasEstoqueController = require('../controllers/retiradasEstoque');
 const setoresController = require('../controllers/setores');
 const UsuariosController = require('../controllers/usuarios');
 
@@ -38,10 +38,10 @@ router.post('/produtos', ProdutosController.cadastrarProdutos)
 router.patch('/produtos', ProdutosController.editarProdutos)
 router.delete('/produtos', ProdutosController.apagarProdutos)
 
-router.get('/retiradaEstoque', RetiradaEstoqueController.listarRetiradaEstoque)
-router.post('/retiradaEstoque', RetiradaEstoqueController.cadastrarRetiradaEstoque)
-router.patch('/retiradaEstoque', RetiradaEstoqueController.editarRetiradaEstoque)
-router.delete('/retiradaEstoque', RetiradaEstoqueController.apagarRetiradaEstoque)
+router.get('/RetiradasEstoque', RetiradasEstoqueController.listarRetiradasEstoque)
+router.post('/RetiradasEstoque', RetiradasEstoqueController.cadastrarRetiradasEstoque)
+router.patch('/RetiradasEstoque', RetiradasEstoqueController.editarRetiradasEstoque)
+router.delete('/RetiradasEstoque', RetiradasEstoqueController.apagarRetiradasEstoque)
 
 router.get('/setores', setoresController.listarSetores)
 router.post('/setores', setoresController.cadastrarSetores)

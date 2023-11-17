@@ -7,7 +7,7 @@ const AtividadeTiposController = require('../controllers/atividadeTipos');
 const FornecedoresController = require('../controllers/fornecedores');
 const FornecedoresProdutosController = require('../controllers/fornecedoresProduto');
 const ProdutosController = require('../controllers/produtos');
-const RetiradaEstoqueController = require('../controllers/retiradaEstoque');
+const RetiradasEstoqueController = require('../controllers/retiradasEstoque');
 const setoresController = require('../controllers/setores');
 const UsuariosController = require('../controllers/usuarios');
 
@@ -15,13 +15,13 @@ const UsuariosController = require('../controllers/usuarios');
 
 router.get('/atividades', AtividadesController.listarAtividades)
 router.post('/atividades', AtividadesController.cadastrarAtividades)
-router.patch('/atividades', AtividadesController.editarAtividades)
-router.delete('/atividades', AtividadesController.apagarAtividades)
+router.patch('/atividades/:atv_id', AtividadesController.editarAtividades)
+router.delete('/atividades/:atv_id', AtividadesController.apagarAtividades)
 
 router.get('/atividadeTipos', AtividadeTiposController.listarAtividadeTipos)
 router.post('/atividadeTipos', AtividadeTiposController.cadastrarAtividadeTipos)
-router.patch('/atividadeTipos', AtividadeTiposController.editarAtividadeTipos)
-router.delete('/atividadeTipos', AtividadeTiposController.apagarAtividadeTipos)
+router.patch('/atividadeTipos/:atv_tp_tipo', AtividadeTiposController.editarAtividadeTipos)
+router.delete('/atividadeTipos/:atv_tp_tipo', AtividadeTiposController.apagarAtividadeTipos)
 
 router.get('/fornecedores', FornecedoresController.listarFornecedores)
 router.post('/fornecedores', FornecedoresController.cadastrarFornecedores)
@@ -38,10 +38,10 @@ router.post('/produtos', ProdutosController.cadastrarProdutos)
 router.patch('/produtos', ProdutosController.editarProdutos)
 router.delete('/produtos', ProdutosController.apagarProdutos)
 
-router.get('/retiradaEstoque', RetiradaEstoqueController.listarRetiradaEstoque)
-router.post('/retiradaEstoque', RetiradaEstoqueController.cadastrarRetiradaEstoque)
-router.patch('/retiradaEstoque', RetiradaEstoqueController.editarRetiradaEstoque)
-router.delete('/retiradaEstoque', RetiradaEstoqueController.apagarRetiradaEstoque)
+router.get('/RetiradasEstoque', RetiradasEstoqueController.listarRetiradasEstoque)
+router.post('/RetiradasEstoque', RetiradasEstoqueController.cadastrarRetiradasEstoque)
+router.patch('/RetiradasEstoque/:ret_id', RetiradasEstoqueController.editarRetiradasEstoque)
+router.delete('/RetiradasEstoque/:ret_id', RetiradasEstoqueController.apagarRetiradasEstoque)
 
 router.get('/setores', setoresController.listarSetores)
 router.post('/setores', setoresController.cadastrarSetores)
