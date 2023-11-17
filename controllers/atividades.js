@@ -22,8 +22,8 @@ module.exports = {
     async cadastrarAtividades(request, response) {
         try {
             const {atv_dthr, atv_status, prod_id, usu_id, set_id} = request.body;
-            const sql = 'INSERT INTO atividades (atv_dthr, atv_status, prod_id, usu_id, set_id) VALUES (?, ?, ?, ?, ?, ?) ;';
-            const values = [atv_id, atv_dthr, atv_status, prod_id, usu_id, set_id];
+            const sql = 'INSERT INTO atividades (atv_dthr, atv_status, prod_id, usu_id, set_id, atv_tp_id) VALUES (?, ?, ?, ?, ?, ?) ;';
+            const values = [atv_dthr, atv_status, prod_id, usu_id, set_id];
             const confirmacao = await db.query(sql,values);
             const atv_id = confirmacao[0].insertId;
 
@@ -42,7 +42,7 @@ module.exports = {
             const {atv_dthr, atv_status, prod_id, usu_id, set_id} = request.body;
             const{atv_id} = request.params;
             const sql = 'UPDATE atividades SET atv_dthr = ?, atv_status = ?, prod_id = ?, usu_id = ?, set_id = ? WHERE atv_id =?;';
-            const values = [atv_id, atv_dthr, atv_status, prod_id, usu_id, set_id];
+            const values = [atv_dthr, atv_status, prod_id, usu_id, set_id];
             const atualizacao = await db.query(sql, values);
 
             return response.status(200).json(
@@ -59,8 +59,8 @@ module.exports = {
 
     async apagarAtividades(request, response) {
         try {
-            const { atv_id } = request.params;
-            const sql = 'DELETE FROM atividades WHERE atv_id = ?';
+            const{atv_id} = request.params;
+            const sql = 'DELETE FROM Atividades WHERE atv_id = ?;';
             const values = [atv_id];
             await db.query(sql, values);
 
@@ -68,6 +68,7 @@ module.exports = {
                 {
                     confirma: 'Sucesso',
                     message: 'Atividades com id ' + atv_id + ' excluido com sucesso'
+
                 }
             );
         } catch (error) {
@@ -75,5 +76,3 @@ module.exports = {
         }
     }, 
 };   
-
-

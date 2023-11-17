@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const AtividadesController = require('../controllers/atividades');
+const AtividadeTiposController = require('../controllers/atividadeTipos');
 const FornecedoresController = require('../controllers/fornecedores');
 const FornecedoresProdutosController = require('../controllers/fornecedoresProduto');
 const ProdutosController = require('../controllers/produtos');
@@ -16,6 +17,12 @@ router.get('/atividades', AtividadesController.listarAtividades)
 router.post('/atividades', AtividadesController.cadastrarAtividades)
 router.patch('/atividades/:atv_id', AtividadesController.editarAtividades)
 router.delete('/atividades/:atv_id', AtividadesController.apagarAtividades)
+
+router.get('/atividadeTipos', AtividadeTiposController.listarAtividadeTipos)
+router.post('/atividadeTipos', AtividadeTiposController.cadastrarAtividadeTipos)
+router.patch('/atividadeTipos', AtividadeTiposController.editarAtividadeTipos)
+router.delete('/atividadeTipos', AtividadeTiposController.apagarAtividadeTipos)
+
 
 router.get('/fornecedores', FornecedoresController.listarFornecedores)
 router.post('/fornecedores', FornecedoresController.cadastrarFornecedores)
@@ -34,8 +41,8 @@ router.delete('/produtos', ProdutosController.apagarProdutos)
 
 router.get('/retiradaEstoque', RetiradaEstoqueController.listarRetiradaEstoque)
 router.post('/retiradaEstoque', RetiradaEstoqueController.cadastrarRetiradaEstoque)
-router.patch('/retiradaEstoque', RetiradaEstoqueController.editarRetiradaEstoque)
-router.delete('/retiradaEstoque', RetiradaEstoqueController.apagarRetiradaEstoque)
+router.patch('/retiradaEstoque/:ret_id', RetiradaEstoqueController.editarRetiradaEstoque)
+router.delete('/retiradaEstoque/:ret_id', RetiradaEstoqueController.apagarRetiradaEstoque)
 
 router.get('/setores', setoresController.listarSetores)
 router.post('/setores', setoresController.cadastrarSetores)
