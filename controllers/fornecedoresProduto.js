@@ -40,7 +40,7 @@ module.exports = {
 
     async editarFornecedoresProduto(request, response) {
         try {
-            const { prod_id} = request.body;
+            const {prod_id} = request.body;
             const{forn_id} = request.params;
             const sql = 'UPDATE Fornecedores_produto SET prod_id = ? WHERE forn_id = ?;';
             const values = [forn_id, prod_id];
