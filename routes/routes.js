@@ -20,8 +20,8 @@ router.delete('/atividades', AtividadesController.apagarAtividades)
 
 router.get('/atividadeTipos', AtividadeTiposController.listarAtividadeTipos)
 router.post('/atividadeTipos', AtividadeTiposController.cadastrarAtividadeTipos)
-router.patch('/atividadeTipos', AtividadeTiposController.editarAtividadeTipos)
-router.delete('/atividadeTipos', AtividadeTiposController.apagarAtividadeTipos)
+router.patch('/atividadeTipos/:atv_tp_id', AtividadeTiposController.editarAtividadeTipos)
+router.delete('/atividadeTipos/:atv_tp_id', AtividadeTiposController.apagarAtividadeTipos)
 
 router.get('/fornecedores', FornecedoresController.listarFornecedores)
 router.post('/fornecedores', FornecedoresController.cadastrarFornecedores)
