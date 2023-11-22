@@ -35,8 +35,8 @@ router.delete('/fornecedoresProduto', FornecedoresProdutosController.apagarForne
 
 router.get('/produtos', ProdutosController.listarProdutos)
 router.post('/produtos', ProdutosController.cadastrarProdutos)
-router.patch('/produtos', ProdutosController.editarProdutos)
-router.delete('/produtos', ProdutosController.apagarProdutos)
+router.patch('/produtos/:prod_id', ProdutosController.editarProdutos)
+router.delete('/produtos/:prod_id', ProdutosController.apagarProdutos)
 
 router.get('/retiradaEstoque', RetiradaEstoqueController.listarRetiradaEstoque)
 router.post('/retiradaEstoque', RetiradaEstoqueController.cadastrarRetiradaEstoque)
