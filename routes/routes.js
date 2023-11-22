@@ -39,8 +39,8 @@ router.delete('/retiradaEstoque', RetiradaEstoqueController.apagarRetiradaEstoqu
 
 router.get('/setores', setoresController.listarSetores)
 router.post('/setores', setoresController.cadastrarSetores)
-router.patch('/setores', setoresController.editarSetores)
-router.delete('/setores', setoresController.apagarSetores)
+router.patch('/setores/:set_id', setoresController.editarSetores)
+router.delete('/setores/:set_id', setoresController.apagarSetores)
 
 router.get('/usuarios', UsuariosController.listarUsuarios)
 router.post('/usuarios', UsuariosController.cadastrarUsuarios)

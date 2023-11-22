@@ -43,13 +43,13 @@ module.exports = {
             const {set_nome, set_localizacao} = request.body;
             const{set_id} = request.params;
             const sql = 'UPDATE SETORES SET set_nome = ?, set_localizacao = ? WHERE set_id =?;';
-            const values = [set_id, set_nome, set_localizacao];
+            const values = [set_nome, set_localizacao, set_id];
             const atualizacao = await db.query(sql, values);
 
             return response.status(200).json(
                 {
                     confirma: 'Sucesso',
-                    message: 'Setores' + set_id + "atualizado com sucesso!",
+                    message: 'Setores ' + set_id + " atualizado com sucesso!",
                     registrosAtualizados: atualizacao[0].affectedRows
                 }
             );
@@ -68,7 +68,7 @@ module.exports = {
             return response.status(200).json(
                 {
                     confirma: 'Sucesso',
-                    message:'Setores com id ' + set_id + 'excluído com sucesso'
+                    message:'Setores com id ' + set_id + ' excluído com sucesso'
                 }
             );
         } catch (error) {
