@@ -43,6 +43,7 @@ router.post('/RetiradasEstoque', RetiradasEstoqueController.cadastrarRetiradasEs
 router.patch('/RetiradasEstoque/:ret_id', RetiradasEstoqueController.editarRetiradasEstoque)
 router.delete('/RetiradasEstoque/:ret_id', RetiradasEstoqueController.apagarRetiradasEstoque)
 
+
 router.get('/setores', setoresController.listarSetores)
 router.post('/setores', setoresController.cadastrarSetores)
 router.patch('/setores', setoresController.editarSetores)

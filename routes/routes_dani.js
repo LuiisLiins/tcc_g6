@@ -23,7 +23,6 @@ router.post('/atividadeTipos', AtividadeTiposController.cadastrarAtividadeTipos)
 router.patch('/atividadeTipos/:atv_tp_tipo', AtividadeTiposController.editarAtividadeTipos)
 router.delete('/atividadeTipos/:atv_tp_tipo', AtividadeTiposController.apagarAtividadeTipos)
 
-
 router.get('/fornecedores', FornecedoresController.listarFornecedores)
 router.post('/fornecedores', FornecedoresController.cadastrarFornecedores)
 router.patch('/fornecedores', FornecedoresController.editarFornecedores)
