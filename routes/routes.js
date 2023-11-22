@@ -40,8 +40,8 @@ router.delete('/produtos', ProdutosController.apagarProdutos)
 
 router.get('/retiradaEstoque', RetiradaEstoqueController.listarRetiradaEstoque)
 router.post('/retiradaEstoque', RetiradaEstoqueController.cadastrarRetiradaEstoque)
-router.patch('/retiradaEstoque', RetiradaEstoqueController.editarRetiradaEstoque)
-router.delete('/retiradaEstoque', RetiradaEstoqueController.apagarRetiradaEstoque)
+router.patch('/retiradaEstoque/:ret_id', RetiradaEstoqueController.editarRetiradaEstoque)
+router.delete('/retiradaEstoque/:ret_id', RetiradaEstoqueController.apagarRetiradaEstoque)
 
 router.get('/setores', setoresController.listarSetores)
 router.post('/setores', setoresController.cadastrarSetores)
