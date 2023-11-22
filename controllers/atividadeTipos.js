@@ -42,7 +42,7 @@ module.exports = {
             const {atv_tp_tipo} = request.body;
             const{atv_tp_id} = request.params;
             const sql = 'UPDATE Atividade_tipos SET atv_tp_tipo = ? WHERE atv_tp_id = ?;';
-            const values = [atv_tp_tipo];
+            const values = [atv_tp_tipo, atv_tp_id];
             const atualizacao = await db.query(sql, values);
 
             return response.status(200).json(

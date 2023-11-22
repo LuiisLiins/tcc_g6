@@ -45,7 +45,7 @@ module.exports = {
             const {ret_qtd, prod_id, atv_id} = request.body;
             const{ret_id} = request.params;
             const sql = 'UPDATE RETIRADAS_ESTOQUE SET ret_qtd = ?, prod_id = ?, atv_id = ? WHERE ret_id = ?;';
-            const values = [ret_qtd, prod_id, atv_id];
+            const values = [ret_qtd, prod_id, atv_id,ret_id];
             const atualizacao = await db.query(sql, values);
 
             return response.status(200).json(
