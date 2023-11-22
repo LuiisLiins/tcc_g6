@@ -22,57 +22,37 @@ module.exports = {
     
     async cadastrarFornecedoresProduto(request, response) {
         try {
-            const { prod_id} = request.body;
+            const { forn_id, prod_id } = request.body;
             const sql = 'INSERT INTO fornecedores_produto (forn_id, prod_id) VALUES (?, ?) ;';
             const values = [forn_id, prod_id];
-            const confirmacao = await db.query(sql,values);
-            const forn_id = confirmacao[0].insertId;
+            const confirmacao = await db.query(sql,values);           
 
             return response.status(200).json(
                 {confirma: 'Sucesso',
                  message:  'cadastro de Fornecedores produto concluido',
-                 forn_id
+                 forn_id, 
+                 prod_id
                 });
         } catch (error) {
             return response.status(500).json({confirma: 'Erro', message: error});
         }
     }, 
 
-    async editarFornecedoresProduto(request, response) {
-        try {
-            const { prod_id} = request.body;
-            const{forn_id} = request.params;
-            const sql = 'UPDATE fornecedores_produto SET prod_id = ? WHERE forn_id =?;';
-            const values = [forn_id, prod_id];
-            const atualizacao = await db.query(sql, values);
-
-            return response.status(200).json(
-                {
-                    confirma: 'Sucesso',
-                    message: 'Fornecedor Produto' + forn_id + " atualizado com sucesso!",
-                    registrosAtualizados: atualizacao[0].affectedRows
-                }
-            );
-        } catch (error) {
-            return response.status(500).json({confirma: 'Erro', message: error});
-        }
-    },
-
     async apagarFornecedoresProduto(request, response) {
         try {
-            const{forn_id} = request.params;
-            const sql = 'DELETE FROM fornecedores_produto WHERE forn_id = ?;';
-            const values = [forn_id];
+            const{forn_id, prod_id} = request.params;
+            const sql = 'DELETE FROM fornecedores_produto WHERE forn_id = ? AND prod_id = ?;';
+            const values = [forn_id, prod_id];
             await db.query(sql, values);
 
             return response.status(200).json(
                 {
                     confirma: 'Sucesso',
-                    message:'Fornecedor com id ' + forn_id + ' excluído com sucesso'
+                    message:'Produto com id ' + prod_id + ' excluído com sucesso do fornecedor' + forn_id
                 }
             );
         } catch (error) {
-            return response.status(500).json({confirma: 'Erro', message: error});
+            return response.status(500).json({confirma: 'Erro', message: error.message});
         }
     },
 };  
