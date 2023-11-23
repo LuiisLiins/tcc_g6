@@ -43,7 +43,7 @@ module.exports = {
             const { usu_nome, usu_login, usu_senha, usu_adm} = request.body;
             const{usu_id} = request.params;
             const sql = 'UPDATE USUARIOS SET usu_nome = ?, usu_login = ?, usu_senha = ?, usu_adm = ? WHERE usu_id = ?;';
-            const values = [usu_id, usu_nome, usu_login, usu_senha, usu_adm];
+            const values = [usu_nome, usu_login, usu_senha, usu_adm,usu_id];
             const atualizacao = await db.query(sql, values);
 
             return response.status(200).json(
