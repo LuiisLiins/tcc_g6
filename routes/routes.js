@@ -51,7 +51,7 @@ router.delete('/setores', setoresController.apagarSetores)
 
 router.get('/usuarios', UsuariosController.listarUsuarios)
 router.post('/usuarios', UsuariosController.cadastrarUsuarios)
-router.patch('/usuarios', UsuariosController.editarUsuarios)
-router.delete('/usuarios', UsuariosController.apagarUsuarios)
+router.patch('/usuarios/:usu_id', UsuariosController.editarUsuarios)
+router.delete('/usuarios/:usu_id', UsuariosController.apagarUsuarios)
 
 module.exports = router;
